@@ -1,6 +1,6 @@
 package com.projetinho.courseproject.resources;
 
-import com.projetinho.courseproject.entities.Users;
+import com.projetinho.courseproject.entities.User;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserResource {
 
   @GetMapping
-  public ResponseEntity<Users> findAll(){
-    Users u = new Users(1L, "Maria", "maria@gmail.com", "999999999", "password");
+  public ResponseEntity<User> findAll(){
+    User u = new User(1L, "Maria", "maria@gmail.com", "999999999", "password");
 
     return ResponseEntity.ok().body(u);
   }

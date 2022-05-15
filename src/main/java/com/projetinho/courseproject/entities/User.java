@@ -8,7 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Users implements Serializable{
+public class User implements Serializable{
 
   private static final long serialVersionUID = 1L;
 
@@ -20,9 +20,9 @@ public class Users implements Serializable{
   private String phone;
   private String password;
 
-  public Users(){}
+  public User(){}
 
-  public Users(Long id, String name, String email, String phone, String password) {
+  public User(Long id, String name, String email, String phone, String password) {
     this.id = id;
     this.name = name;
     this.email = email;
@@ -30,7 +30,7 @@ public class Users implements Serializable{
     this.password = password;
   }
 
-  public long getId() {
+  public Long getId() {
     return id;
   }
 
@@ -74,7 +74,7 @@ public class Users implements Serializable{
   public int hashCode() {
     final int prime = 31;
     int result = 1;
-    result = prime * result + (int) (id ^ (id >>> 32));
+    result = prime * result + ((id == null) ? 0 : id.hashCode());
     return result;
   }
 
@@ -86,8 +86,11 @@ public class Users implements Serializable{
       return false;
     if (getClass() != obj.getClass())
       return false;
-    Users other = (Users) obj;
-    if (id != other.id)
+    User other = (User) obj;
+    if (id == null) {
+      if (other.id != null)
+        return false;
+    } else if (!id.equals(other.id))
       return false;
     return true;
   }
